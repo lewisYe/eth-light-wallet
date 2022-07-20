@@ -1,1 +1,2 @@
-# eth-light-wallet
+# js-ethwallet
+An ethereum wallet tool for Javascript
