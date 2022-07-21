@@ -1,3 +1,4 @@
+import '@babel/polyfill'
 import { Contract, ContractInterface, ethers, Signer } from 'ethers';
 import { JsonRpcProvider, Web3Provider, BaseProvider } from '@ethersproject/providers';
 import  dataEncryption from './dataEncryption';
@@ -54,7 +55,7 @@ type CallbackFunctionType = (arg0: CallbackParams) => void;
 
 export const connect = async (switchChainId?: string) => {
   if (hasWallet()) {
-    if(isConnected()) return;
+    // if(isConnected()) return;
     try {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
@@ -80,7 +81,7 @@ export const connect = async (switchChainId?: string) => {
       return Promise.reject(error);
     }
   } else {
-    console.warn('window.ethereum is undefined');
+    throw new Error('window.ethereum is undefined')
   }
 }
 
@@ -164,7 +165,7 @@ export const getWalletAddress = async () => {
 export function isConnected() {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
-  return window.ethereum.isConnected();
+  return window?.ethereum.isConnected() || false;
 }
 
 // 判断钱包是否存在

@@ -47,7 +47,7 @@ declare function isValidKey(key: string | number | symbol, object: object): key 
 declare const connect: (switchChainId?: string) => Promise<{
     account: any;
     chainId: any;
-} | undefined>;
+}>;
 declare const switchChain: (chainId: string, callback?: () => void) => Promise<void>;
 declare const getNetwork: () => Promise<ethers.providers.Network>;
 declare function getSigner(): ethers.Signer | undefined;
